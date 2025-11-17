@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人的一生 - 互动展示</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>人的一生</h1>
+        <p class="subtitle">从出生到暮年的人生旅程</p>
+    </header>
+
+    <main>
+        <div class="timeline">
+            <div class="stage" data-stage="birth">
+                <div class="stage-icon">👶</div>
+                <h2>诞生</h2>
+                <p>生命的开始，充满无限可能</p>
+                <div class="stage-content">
+                    <div class="scene">
+                        <div class="baby"></div>
+                        <div class="hospital"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage" data-stage="childhood">
+                <div class="stage-icon">🧒</div>
+                <h2>童年</h2>
+                <p>无忧无虑，探索世界的年纪</p>
+                <div class="stage-content">
+                    <div class="scene">
+                        <div class="toys"></div>
+                        <div class="school"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage" data-stage="youth">
+                <div class="stage-icon">🎓</div>
+                <h2>青春</h2>
+                <p>追逐梦想，热血奋斗的时光</p>
+                <div class="stage-content">
+                    <div class="scene">
+                        <div class="books"></div>
+                        <div class="graduation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage" data-stage="adult">
+                <div class="stage-icon">💼</div>
+                <h2>成年</h2>
+                <p>承担责任，创造价值的阶段</p>
+                <div class="stage-content">
+                    <div class="scene">
+                        <div class="job"></div>
+                        <div class="family"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage" data-stage="middle">
+                <div class="stage-icon">👨‍👩‍👧‍👦</div>
+                <h2>中年</h2>
+                <p>事业有成，家庭美满的收获期</p>
+                <div class="stage-content">
+                    <div class="scene">
+                        <div class="career"></div>
+                        <div class="children"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage" data-stage="elder">
+                <div class="stage-icon">👴</div>
+                <h2>暮年</h2>
+                <p>智慧沉淀，享受人生的时光</p>
+                <div class="stage-content">
+                    <div class="scene">
+                        <div class="grandchildren"></div>
+                        <div class="memories"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+
+    <div class="controls">
+        <button id="prevBtn" class="btn">← 上一阶段</button>
+        <button id="nextBtn" class="btn">下一阶段 →</button>
+        <button id="autoBtn" class="btn">自动播放</button>
+        <button id="shareBtn" class="btn">分享人生</button>
+    </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
