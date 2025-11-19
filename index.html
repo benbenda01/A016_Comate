@@ -10,9 +10,90 @@
     <header>
         <h1>人的一生</h1>
         <p class="subtitle">从出生到暮年的人生旅程</p>
+        
+        <!-- 置顶控制按钮 -->
+        <div class="controls top-controls">
+            <button id="prevBtn" class="btn">← 上一阶段</button>
+            <button id="nextBtn" class="btn">下一阶段 →</button>
+            <button id="autoBtn" class="btn">自动播放</button>
+            <button id="shareBtn" class="btn">分享人生</button>
+        </div>
     </header>
 
     <main>
+        <!-- 游戏规则侧边栏 -->
+        <aside class="game-rules-sidebar">
+            <div class="rules-header">
+                <h3>🎮 游戏规则与玩法</h3>
+                <button id="toggleRules" class="toggle-btn">收起</button>
+            </div>
+            
+            <div class="rules-content">
+                <section class="rule-section">
+                    <h4>📖 基础操作</h4>
+                    <ul>
+                        <li>点击任意人生阶段图标进入该阶段</li>
+                        <li>使用顶部按钮切换上/下一阶段</li>
+                        <li>点击"自动播放"观看完整人生旅程</li>
+                        <li>键盘方向键 ← → 快速切换阶段</li>
+                        <li>空格键启动/停止自动播放</li>
+                    </ul>
+                </section>
+
+                <section class="rule-section">
+                    <h4>🎯 互动元素</h4>
+                    <ul>
+                        <li><strong>人生语录</strong>：每个阶段随机显示智慧格言</li>
+                        <li><strong>随机事件</strong>：20%概率触发特殊人生事件</li>
+                        <li><strong>成就系统</strong>：点击阶段图标查看并解锁成就</li>
+                        <li><strong>收藏品</strong>：切换阶段时30%概率获得收藏品</li>
+                    </ul>
+                </section>
+
+                <section class="rule-section">
+                    <h4>🕹️ 迷你游戏</h4>
+                    <ul>
+                        <li><strong>诞生阶段</strong>：新生儿反应测试 - 快速点击闪烁表情</li>
+                        <li><strong>童年阶段</strong>：记忆大师 - 翻牌配对记忆游戏</li>
+                        <li><strong>青春阶段</strong>：追梦打字 - 快速输入显示单词</li>
+                        <li><strong>成年阶段</strong>：人生选择 - 做出明智的决策</li>
+                    </ul>
+                    <p class="tip">💡 点击成就面板时有30%概率触发迷你游戏！</p>
+                </section>
+
+                <section class="rule-section">
+                    <h4>📊 统计与收藏</h4>
+                    <ul>
+                        <li>点击"📊 统计"按钮查看人生数据</li>
+                        <li>查看已解锁成就和收集进度</li>
+                        <li>浏览所有阶段的收藏品</li>
+                        <li>追踪当前人生进度百分比</li>
+                    </ul>
+                </section>
+
+                <section class="rule-section">
+                    <h4>🎨 特色功能</h4>
+                    <ul>
+                        <li>动态渐变背景和粒子特效</li>
+                        <li>精美的过场动画和转场效果</li>
+                        <li>成就解锁时的庆祝动画</li>
+                        <li>分享功能：向好友展示你的人生旅程</li>
+                    </ul>
+                </section>
+
+                <section class="rule-section tips">
+                    <h4>💡 游戏技巧</h4>
+                    <ul>
+                        <li>多次点击阶段图标增加触发事件概率</li>
+                        <li>完成迷你游戏高分可解锁额外成就</li>
+                        <li>收集所有收藏品解锁隐藏内容</li>
+                        <li>尝试不同的游戏顺序体验不同故事</li>
+                    </ul>
+                </section>
+            </div>
+        </aside>
+
+        <div class="main-content">
         <div class="timeline">
             <div class="stage" data-stage="birth">
                 <div class="stage-icon">👶</div>
@@ -90,13 +171,7 @@
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
-
-    <div class="controls">
-        <button id="prevBtn" class="btn">← 上一阶段</button>
-        <button id="nextBtn" class="btn">下一阶段 →</button>
-        <button id="autoBtn" class="btn">自动播放</button>
-        <button id="shareBtn" class="btn">分享人生</button>
-    </div>
+        </div>
     </main>
 
     <script src="script.js"></script>
