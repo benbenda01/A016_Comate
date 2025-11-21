@@ -3,177 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人的一生 - 互动展示</title>
+    <title>人生3D贪吃蛇 - 生命的旅程</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>人的一生</h1>
-        <p class="subtitle">从出生到暮年的人生旅程</p>
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="snake-loader">🐍</div>
+            <p>正在加载人生旅程...</p>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
         
-        <!-- 置顶控制按钮 -->
-        <div class="controls top-controls">
-            <button id="prevBtn" class="btn">← 上一阶段</button>
-            <button id="nextBtn" class="btn">下一阶段 →</button>
-            <button id="autoBtn" class="btn">自动播放</button>
-            <button id="shareBtn" class="btn">分享人生</button>
-        </div>
-    </header>
-
-    <main>
-        <!-- 游戏规则侧边栏 -->
-        <aside class="game-rules-sidebar">
-            <div class="rules-header">
-                <h3>🎮 游戏规则与玩法</h3>
-                <button id="toggleRules" class="toggle-btn">收起</button>
+        <!-- 游戏信息面板 -->
+        <div class="info-panel">
+            <div class="life-stage">
+                <h2 id="current-stage">诞生阶段</h2>
+                <p id="stage-desc">生命的开始，充满无限可能</p>
             </div>
-            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">人生长度：</span>
+                    <span class="stat-value" id="snake-length">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">当前阶段：</span>
+                    <span class="stat-value" id="stage-progress">0/6</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">成就收集：</span>
+                    <span class="stat-value" id="achievements">0/18</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <button id="start-btn" class="control-btn primary">
+                <span class="btn-icon">▶️</span>
+                <span class="btn-text">开始人生</span>
+            </button>
+            <button id="pause-btn" class="control-btn" disabled>
+                <span class="btn-icon">⏸️</span>
+                <span class="btn-text">暂停</span>
+            </button>
+            <button id="restart-btn" class="control-btn">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">重新开始</span>
+            </button>
+            <button id="view-toggle" class="control-btn">
+                <span class="btn-icon">🎥</span>
+                <span class="btn-text">切换视角</span>
+            </button>
+        </div>
+
+        <!-- 成就通知 -->
+        <div id="achievement-popup" class="achievement-popup hidden">
+            <div class="achievement-content">
+                <div class="achievement-icon">🏆</div>
+                <div class="achievement-text">
+                    <h3 id="achievement-title">成就解锁！</h3>
+                    <p id="achievement-desc">获得新的人生里程碑</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 人生格言提示 -->
+        <div id="quote-display" class="quote-display hidden">
+            <div class="quote-icon">💭</div>
+            <p id="quote-text"></p>
+        </div>
+
+        <!-- 游戏规则说明 -->
+        <div class="rules-panel" id="rules-panel">
+            <button class="close-rules" id="close-rules">×</button>
+            <h3>🎮 游戏规则</h3>
             <div class="rules-content">
-                <section class="rule-section">
-                    <h4>📖 基础操作</h4>
+                <section>
+                    <h4>?? 关于贪吃蛇</h4>
+                    <p>蛇代表您的人生旅程，每吃掉一个目标，蛇就会成长一节，象征人生阅历的积累。</p>
+                </section>
+                <section>
+                    <h4>🎯 人生阶段</h4>
                     <ul>
-                        <li>点击任意人生阶段图标进入该阶段</li>
-                        <li>使用顶部按钮切换上/下一阶段</li>
-                        <li>点击"自动播放"观看完整人生旅程</li>
-                        <li>键盘方向键 ← → 快速切换阶段</li>
-                        <li>空格键启动/停止自动播放</li>
+                        <li>👶 诞生 - 生命的起点</li>
+                        <li>🧒 童年 - 无忧无虑的时光</li>
+                        <li>🎓 青春 - 追梦的年纪</li>
+                        <li>💼 成年 - 承担责任</li>
+                        <li>👨‍👩‍👧‍👦 中年 - 收获期</li>
+                        <li>👴 暮年 - 智慧沉淀</li>
                     </ul>
                 </section>
-
-                <section class="rule-section">
-                    <h4>🎯 互动元素</h4>
+                <section>
+                    <h4>?? 操作方式</h4>
+                    <p><strong>自动模式：</strong>点击"开始人生"，观看AI自动演绎人生旅程</p>
+                    <p><strong>手动控制：</strong>使用方向键 ↑↓←→ 控制人生方向</p>
+                    <p><strong>视角切换：</strong>点击"切换视角"改变观察角度</p>
+                </section>
+                <section>
+                    <h4>✨ 特色功能</h4>
                     <ul>
-                        <li><strong>人生语录</strong>：每个阶段随机显示智慧格言</li>
-                        <li><strong>随机事件</strong>：20%概率触发特殊人生事件</li>
-                        <li><strong>成就系统</strong>：点击阶段图标查看并解锁成就</li>
-                        <li><strong>收藏品</strong>：切换阶段时30%概率获得收藏品</li>
+                        <li>🌟 3D立体空间中的人生体验</li>
+                        <li>🎨 每个阶段独特的视觉效果</li>
+                        <li>🏆 18个人生成就等待解锁</li>
+                        <li>💭 随机出现的人生智慧格言</li>
                     </ul>
                 </section>
-
-                <section class="rule-section">
-                    <h4>🕹️ 迷你游戏</h4>
-                    <ul>
-                        <li><strong>诞生阶段</strong>：新生儿反应测试 - 快速点击闪烁表情</li>
-                        <li><strong>童年阶段</strong>：记忆大师 - 翻牌配对记忆游戏</li>
-                        <li><strong>青春阶段</strong>：追梦打字 - 快速输入显示单词</li>
-                        <li><strong>成年阶段</strong>：人生选择 - 做出明智的决策</li>
-                    </ul>
-                    <p class="tip">💡 点击成就面板时有30%概率触发迷你游戏！</p>
-                </section>
-
-                <section class="rule-section">
-                    <h4>📊 统计与收藏</h4>
-                    <ul>
-                        <li>点击"📊 统计"按钮查看人生数据</li>
-                        <li>查看已解锁成就和收集进度</li>
-                        <li>浏览所有阶段的收藏品</li>
-                        <li>追踪当前人生进度百分比</li>
-                    </ul>
-                </section>
-
-                <section class="rule-section">
-                    <h4>🎨 特色功能</h4>
-                    <ul>
-                        <li>动态渐变背景和粒子特效</li>
-                        <li>精美的过场动画和转场效果</li>
-                        <li>成就解锁时的庆祝动画</li>
-                        <li>分享功能：向好友展示你的人生旅程</li>
-                    </ul>
-                </section>
-
-                <section class="rule-section tips">
-                    <h4>💡 游戏技巧</h4>
-                    <ul>
-                        <li>多次点击阶段图标增加触发事件概率</li>
-                        <li>完成迷你游戏高分可解锁额外成就</li>
-                        <li>收集所有收藏品解锁隐藏内容</li>
-                        <li>尝试不同的游戏顺序体验不同故事</li>
-                    </ul>
-                </section>
-            </div>
-        </aside>
-
-        <div class="main-content">
-        <div class="timeline">
-            <div class="stage" data-stage="birth">
-                <div class="stage-icon">👶</div>
-                <h2>诞生</h2>
-                <p>生命的开始，充满无限可能</p>
-                <div class="stage-content">
-                    <div class="scene">
-                        <div class="baby"></div>
-                        <div class="hospital"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage" data-stage="childhood">
-                <div class="stage-icon">🧒</div>
-                <h2>童年</h2>
-                <p>无忧无虑，探索世界的年纪</p>
-                <div class="stage-content">
-                    <div class="scene">
-                        <div class="toys"></div>
-                        <div class="school"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage" data-stage="youth">
-                <div class="stage-icon">🎓</div>
-                <h2>青春</h2>
-                <p>追逐梦想，热血奋斗的时光</p>
-                <div class="stage-content">
-                    <div class="scene">
-                        <div class="books"></div>
-                        <div class="graduation"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage" data-stage="adult">
-                <div class="stage-icon">💼</div>
-                <h2>成年</h2>
-                <p>承担责任，创造价值的阶段</p>
-                <div class="stage-content">
-                    <div class="scene">
-                        <div class="job"></div>
-                        <div class="family"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage" data-stage="middle">
-                <div class="stage-icon">👨‍👩‍👧‍👦</div>
-                <h2>中年</h2>
-                <p>事业有成，家庭美满的收获期</p>
-                <div class="stage-content">
-                    <div class="scene">
-                        <div class="career"></div>
-                        <div class="children"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage" data-stage="elder">
-                <div class="stage-icon">👴</div>
-                <h2>暮年</h2>
-                <p>智慧沉淀，享受人生的时光</p>
-                <div class="stage-content">
-                    <div class="scene">
-                        <div class="grandchildren"></div>
-                        <div class="memories"></div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <div class="progress-bar">
-            <div class="progress"></div>
+        <!-- 游戏结束面板 -->
+        <div id="game-over-panel" class="game-over-panel hidden">
+            <div class="game-over-content">
+                <h2>🌟 人生旅程完成 🌟</h2>
+                <div class="final-stats">
+                    <div class="stat-row">
+                        <span>人生长度：</span>
+                        <span id="final-length">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>经历阶段：</span>
+                        <span id="final-stages">0/6</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>解锁成就：</span>
+                        <span id="final-achievements">0/18</span>
+                    </div>
+                </div>
+                <p class="final-quote">"人生就像一场旅程，重要的不是目的地，而是沿途的风景和看风景的心情。"</p>
+                <button id="restart-final" class="control-btn primary">
+                    <span class="btn-icon">🔄</span>
+                    <span class="btn-text">重新体验人生</span>
+                </button>
+            </div>
         </div>
-        </div>
-    </main>
+    </div>
 
+    <!-- Three.js库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
