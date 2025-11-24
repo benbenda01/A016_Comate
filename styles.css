@@ -4,11 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Microsoft YaHei', Arial, sans-serif;
     color: #f0f0f0;
-    background-color: #0a0a14;
+    background-color: #0a140a;
     overflow: hidden;
 }
 
@@ -19,7 +18,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0a0a14;
+    background-color: #0a140a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,16 +57,15 @@ body {
     z-index: 1;
 }
 
-/* 信息面板 */
 .info-panel {
     position: absolute;
     top: 20px;
     left: 20px;
-    background: rgba(10, 10, 20, 0.8);
+    background: rgba(10, 20, 10, 0.8);
     backdrop-filter: blur(10px);
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid rgba(100, 100, 255, 0.3);
+    border: 1px solid rgba(100, 200, 100, 0.3);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     z-index: 2;
     max-width: 300px;
@@ -78,11 +76,10 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 10px;
 }
-
 .life-stage h2 {
     font-size: 1.6rem;
     margin-bottom: 5px;
-    color: #8ab4f8;
+    color: #8af8b4;
     display: flex;
     align-items: center;
 }
@@ -108,16 +105,14 @@ body {
     font-weight: bold;
     color: #a0a0a0;
 }
-
 .stat-value {
-    background: rgba(100, 100, 255, 0.2);
+    background: rgba(100, 200, 100, 0.2);
     padding: 2px 8px;
     border-radius: 10px;
     color: #ffffff;
     font-weight: bold;
 }
 
-/* 控制面板 */
 .control-panel {
     position: absolute;
     bottom: 20px;
@@ -126,19 +121,18 @@ body {
     display: flex;
     gap: 10px;
     z-index: 2;
-    background: rgba(10, 10, 20, 0.8);
+    background: rgba(10, 20, 10, 0.8);
     backdrop-filter: blur(10px);
     padding: 10px;
     border-radius: 15px;
-    border: 1px solid rgba(100, 100, 255, 0.3);
+    border: 1px solid rgba(100, 200, 100, 0.3);
 }
-
 .control-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(30, 30, 60, 0.8);
+    background: rgba(30, 60, 30, 0.8);
     border: none;
     border-radius: 10px;
     padding: 8px 15px;
@@ -146,9 +140,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .control-btn:hover {
-    background: rgba(60, 60, 100, 0.8);
+    background: rgba(60, 100, 60, 0.8);
     transform: translateY(-2px);
 }
 
@@ -163,11 +156,11 @@ body {
 }
 
 .control-btn.primary {
-    background: rgba(100, 100, 255, 0.4);
+    background: rgba(100, 255, 100, 0.4);
 }
 
 .control-btn.primary:hover {
-    background: rgba(120, 120, 255, 0.6);
+    background: rgba(120, 255, 120, 0.6);
 }
 
 .btn-icon {
@@ -180,16 +173,15 @@ body {
     white-space: nowrap;
 }
 
-/* 成就通知 */
 .achievement-popup {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, rgba(100, 100, 255, 0.8), rgba(50, 50, 150, 0.8));
+    background: linear-gradient(135deg, rgba(100, 200, 100, 0.8), rgba(50, 150, 50, 0.8));
     backdrop-filter: blur(10px);
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid rgba(150, 150, 255, 0.5);
+    border: 1px solid rgba(150, 255, 150, 0.5);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     z-index: 3;
     transition: all 0.3s ease;
@@ -218,28 +210,26 @@ body {
     font-size: 0.9rem;
 }
 
-/* 格言提示 */
 .quote-display {
     position: absolute;
     bottom: 100px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(10, 10, 20, 0.8);
+    background: rgba(10, 20, 10, 0.8);
     backdrop-filter: blur(10px);
     padding: 15px 25px;
     border-radius: 10px;
-    border: 1px solid rgba(100, 100, 255, 0.3);
+    border: 1px solid rgba(100, 200, 100, 0.3);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     z-index: 3;
     text-align: center;
     max-width: 80%;
     animation: fadeIn 0.5s ease-out;
 }
-
 .quote-icon {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #8ab4f8;
+    color: #8af8b4;
 }
 
 #quote-text {
@@ -248,17 +238,16 @@ body {
     line-height: 1.4;
 }
 
-/* 游戏规则面板 */
 .rules-panel {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(20, 20, 40, 0.95);
+    background: rgba(20, 40, 20, 0.95);
     backdrop-filter: blur(15px);
     padding: 25px;
     border-radius: 15px;
-    border: 1px solid rgba(100, 100, 255, 0.3);
+    border: 1px solid rgba(100, 200, 100, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     z-index: 4;
     width: 90%;
@@ -267,12 +256,11 @@ body {
     overflow-y: auto;
     color: #e0e0e0;
 }
-
 .rules-panel h3 {
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #8ab4f8;
+    color: #8af8b4;
 }
 
 .rules-content {
@@ -282,7 +270,7 @@ body {
 }
 
 .rules-content section {
-    border-bottom: 1px solid rgba(100, 100, 255, 0.2);
+    border-bottom: 1px solid rgba(100, 200, 100, 0.2);
     padding-bottom: 15px;
 }
 
@@ -290,9 +278,8 @@ body {
     border-bottom: none;
     padding-bottom: 0;
 }
-
 .rules-content h4 {
-    color: #a0c4ff;
+    color: #a0ffc4;
     margin-bottom: 10px;
     font-size: 1.2rem;
 }
@@ -307,12 +294,11 @@ body {
     padding-left: 20px;
     margin: 10px 0;
 }
-
 .close-rules {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: rgba(100, 100, 255, 0.2);
+    background: rgba(100, 200, 100, 0.2);
     border: none;
     border-radius: 50%;
     width: 30px;
@@ -327,7 +313,7 @@ body {
 }
 
 .close-rules:hover {
-    background: rgba(100, 100, 255, 0.4);
+    background: rgba(100, 200, 100, 0.4);
     transform: rotate(90deg);
 }
 
@@ -346,37 +332,35 @@ body {
     z-index: 5;
     animation: fadeIn 0.5s ease-out;
 }
-
 .game-over-content {
-    background: rgba(20, 20, 40, 0.9);
+    background: rgba(20, 40, 20, 0.9);
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid rgba(100, 100, 255, 0.3);
+    border: 1px solid rgba(100, 200, 100, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
     max-width: 500px;
 }
-
 .game-over-content h2 {
     font-size: 2rem;
     margin-bottom: 25px;
-    color: #8ab4f8;
-    text-shadow: 0 2px 10px rgba(100, 100, 255, 0.5);
+    color: #8af8b4;
+    text-shadow: 0 2px 10px rgba(100, 200, 100, 0.5);
 }
 
 .final-stats {
-    background: rgba(30, 30, 60, 0.5);
+    background: rgba(30, 60, 30, 0.5);
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 25px;
-    border: 1px solid rgba(100, 100, 255, 0.2);
+    border: 1px solid rgba(100, 200, 100, 0.2);
 }
 
 .stat-row {
     display: flex;
     justify-content: space-between;
     padding: 10px 5px;
-    border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+    border-bottom: 1px solid rgba(100, 200, 100, 0.1);
 }
 
 .stat-row:last-child {
@@ -385,7 +369,7 @@ body {
 
 .final-quote {
     font-style: italic;
-    color: #a0c4ff;
+    color: #a0ffc4;
     margin: 20px 0;
     line-height: 1.5;
 }

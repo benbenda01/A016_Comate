@@ -230,6 +230,48 @@ class SnakeGame3D {
         segment.castShadow = true;
         this.scene.add(segment);
         this.snakeSegments.push(segment);
+
+        // 为蛇头添加"笨"字标签
+        this.addTextToSegment(segment, '笨', 0);
+    }
+
+    addTextToSegment(segment, text, index) {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = 256;
+        canvas.height = 256;
+        
+        context.font = '160px Arial';
+        context.fillStyle = '#0000FF'; // 蓝色字体
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText(text, 128, 128);
+        
+        const texture = new THREE.CanvasTexture(canvas);
+        const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+        const sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(0.8, 0.8, 1);
+        sprite.position.y = 0.9;
+        
+        segment.add(sprite);
+        segment.textSprite = sprite;
+    }
+
+    updateSnakeLabels() {
+        this.snakeSegments.forEach((segment, index) => {
+            if (index === 0) {
+                // 蛇头保持"笨"字
+                if (!segment.textSprite) {
+                    this.addTextToSegment(segment, '笨', 0);
+                }
+            } else {
+                // 更新蛇身的序列数字
+                if (segment.textSprite) {
+                    segment.remove(segment.textSprite);
+                }
+                this.addTextToSegment(segment, index.toString(), index);
+            }
+        });
     }
 
     spawnFood() {
@@ -353,15 +395,24 @@ class SnakeGame3D {
 
         // 更新蛇身颜色（渐变效果）
         this.updateSnakeColors();
+
+        // 更新所有蛇节的文字标签
+        this.updateSnakeLabels();
     }
 
     updateSnakeColors() {
+        const rainbowColors = [
+            0xFF0000, // 赤
+            0xFF7F00, // 橙
+            0xFFFF00, // 黄
+            0x00FF00, // 绿
+            0x00FFFF, // 青
+            0x0000FF, // 蓝
+            0x8B00FF  // 紫
+        ];
         this.snakeSegments.forEach((segment, index) => {
-            const stageIndex = Math.min(
-                Math.floor(index / 3),
-                lifeStages.length - 1
-            );
-            const color = lifeStages[stageIndex].color;
+            const colorIndex = index % rainbowColors.length;
+            const color = rainbowColors[colorIndex];
             segment.material.color.setHex(color);
             segment.material.emissive.setHex(color);
         });
@@ -541,6 +592,11 @@ class SnakeGame3D {
         this.updateCameraPosition();
     }
 
+    zoomCamera(direction) {
+        this.cameraDistance = Math.max(15, Math.min(35, this.cameraDistance + direction * 2));
+        this.updateCameraPosition();
+    }
+
     updateUI() {
         document.getElementById('snake-length').textContent = this.snake.length;
         document.getElementById('stage-progress').textContent = 
@@ -568,6 +624,15 @@ class SnakeGame3D {
         // 视角切换
         document.getElementById('view-toggle').addEventListener('click', () => {
             this.toggleCamera();
+        });
+
+        // 缩放按钮
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            this.zoomCamera(-1);
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            this.zoomCamera(1);
         });
 
         // 键盘控制

@@ -210,6 +210,18 @@ function initSnake() {
         
         // 添加到蛇数组
         snake.push(segment);
+
+        // 为蛇头添加"笨"字
+        if (i === 0) {
+            const headSprite = makeTextSprite('笨');
+            headSprite.position.set(0, 0.7, 0);
+            segment.add(headSprite);
+        } else {
+            // 为蛇身添加序列数字
+            const bodySprite = makeTextSprite(i.toString());
+            bodySprite.position.set(0, 0.7, 0);
+            segment.add(bodySprite);
+        }
     }
     
     // 初始方向 - 向右
