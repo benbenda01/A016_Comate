@@ -126,8 +126,8 @@ class SnakeGame3D {
     setupScene() {
         // 场景
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x1a1a2e);
-        this.scene.fog = new THREE.Fog(0x1a1a2e, 10, 50);
+        this.scene.background = new THREE.Color(0x87CEEB); // 天蓝色背景
+        this.scene.fog = new THREE.Fog(0xffffff, 20, 60); // 白色雾效，增加远处白色渐变
 
         // 相机
         this.camera = new THREE.PerspectiveCamera(
